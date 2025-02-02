@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chatbot for HTML & CSS Generation
 
-## Getting Started
+## Project Overview
+This project is a **Chatbot Application** designed to generate well-structured HTML and CSS code within a single file and provide a **live preview** of the generated code. The primary goal is to facilitate rapid MVP creation for landing pages by leveraging AI-driven code generation.
 
-First, run the development server:
+The application is built using modern web technologies and adheres to best practices in UI/UX design, authentication, and backend services.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+### **Authentication System**
+- User authentication implemented using **NextAuth.js**.
+- Supports authentication via **email/password** and **Google Provider (OAuth)**.
+- Secure JWT-based session handling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Chat Interface**
+- Interactive **chat page** for user input prompts.
+- Integrated chatbot powered by **OpenAI's GPT-4 API**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **HTML & CSS Code Generation**
+- Generates complete, self-contained **HTML and CSS code** for landing pages.
+- Provides **live code preview** within the chat interface using an iframe, with the ability to select different device modes. 
+- Option to **copy and download the generated HTML file**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **System Prompt Optimization**
+- Fine-tuned system prompt to optimize chatbot responses specifically for landing page generation.
+- Ensures modern design patterns, responsive layouts, and production-ready code.
 
-## Learn More
+### **Bonus Features**
+- **Landing Page Optimization:** Incorporates strategies for improved chatbot responses, such as generating predefined templates.
+- **Theme Support:** Offers both Dark Mode and Light Mode for an enhanced user experience.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
+### **Frontend**
+- Framework: **Next.js (TypeScript)**
+- UI Styling: **Tailwind CSS**, **ShadcnUI**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **Backend**
+- Authentication: **NextAuth.js**
+- Database: **PostgreSQL (using Prisma) Supabase**
+- GenAI Provider: **OpenAI (GPT-4)**
+- Hosting: **Vercel**
 
-## Deploy on Vercel
+### **Additional Libraries**
+- **Lucide Icons:** For UI icons.
+- **bcryptjs:** Password hashing for secure user management.
+- **Theme Provider:** Dark Mode and Light Mode
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Installation and Setup
+Follow these instructions to set up the project locally.
+
+### Prerequisites
+- **Node.js v16+**
+- **PostgreSQL Database (Supabase)**
+- Environment variables configured (.env file)
+  ```env
+  DATABASE_URL=your_postgres_db_url
+  NEXTAUTH_SECRET=your_secret_key
+  GOOGLE_CLIENT_ID=your_google_client_id
+  GOOGLE_CLIENT_SECRET=your_google_client_secret
+  OPENAI_API_KEY=your_openai_api_key
+  ```
+
+### **Steps to Run Locally**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AakashRanjan07/Chatbot.git
+   cd chatbot
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run database migrations:
+   ```bash
+   npx prisma migrate dev
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open http://localhost:3000 in your browser.
+
+
+
+
+
+
