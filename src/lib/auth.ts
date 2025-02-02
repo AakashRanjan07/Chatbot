@@ -83,7 +83,7 @@ export const authOptions: NextAuthOptions = {
           const userEmail = user.email;
           if (!userEmail) throw new Error("Google account is missing an email");
 
-          const existingUser = await prisma.user.upsert({
+          await prisma.user.upsert({
             where: { email: userEmail },
             update: {
               name: user.name,

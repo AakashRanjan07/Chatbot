@@ -75,6 +75,7 @@ export default function LoginPage() {
       });
       router.push("/chat");
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",

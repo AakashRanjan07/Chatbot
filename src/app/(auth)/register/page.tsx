@@ -74,6 +74,7 @@ export default function RegisterPage() {
 
       router.push("/login");
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",

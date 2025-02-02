@@ -60,6 +60,7 @@ export default function ChatPage() {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Failed to generate response. Please try again.",
