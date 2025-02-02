@@ -93,7 +93,7 @@ export default function ChatPage() {
         <ResizablePanel defaultSize={50} minSize={30}>
           <div className="h-full">
             {messages.length > 0 && messages[messages.length - 1].code && (
-              <CodePreview code={messages[messages.length - 1].code} />
+              <CodePreview code={messages[messages.length - 1].code ?? ""} />
             )}
           </div>
         </ResizablePanel>
