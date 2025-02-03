@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         temperature: 0.7,
       }),
       new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("Timeout exceeded")), 8000) // Timeout in 8 seconds
+        setTimeout(() => reject(new Error("Timeout exceeded")), 30000) 
       ),
     ]);
 
