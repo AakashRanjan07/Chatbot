@@ -24,16 +24,13 @@ export async function POST(req: Request) {
     const { messages } = body;
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...messages,
-      ],
+      model: "gpt-4",
+      messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
       temperature: 0.7,
     });
 
     const generatedMessage = response.choices[0].message?.content || "";
-    
+
     const codeMatch = generatedMessage.match(/```html([\s\S]*?)```/);
     const code = codeMatch ? codeMatch[1].trim() : "";
 
@@ -46,4 +43,3 @@ export async function POST(req: Request) {
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
-
