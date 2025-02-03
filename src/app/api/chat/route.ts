@@ -23,16 +23,23 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { messages } = body;
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...messages,
-      ],
-      temperature: 0.7,
-    });
+    const response = await Promise.race([
+      openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          ...messages,
+        ],
+        temperature: 0.7,
+      }),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Timeout exceeded")), 8000) // Timeout in 8 seconds
+      ),
+    ]);
 
-    const generatedMessage = response.choices[0].message?.content || "";
+    const completionResponse = response as { choices: { message: { content: string } }[] };
+
+    const generatedMessage = completionResponse.choices[0].message?.content || "";
     
     const codeMatch = generatedMessage.match(/```html([\s\S]*?)```/);
     const code = codeMatch ? codeMatch[1].trim() : "";
@@ -46,4 +53,3 @@ export async function POST(req: Request) {
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
-
